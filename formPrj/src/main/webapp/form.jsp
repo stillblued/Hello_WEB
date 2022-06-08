@@ -16,6 +16,13 @@
 	String em = request.getParameter("email");
 	String ji = request.getParameter("job_id");
 	String hd = request.getParameter("hire_date");
+	String[] hobbies = request.getParameterValues("hobby");
+	
+	for(String hobby : hobbies){
+		out.print("<li>" + hobby + "</li>");
+	}
+	
+	
 	Employees emp = new Employees();
 	emp.setLastName(ln);
 	emp.setEmail(em);
