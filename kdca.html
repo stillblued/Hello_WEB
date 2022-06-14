@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            font-family: "맑은 고딕";
+        }
+
+        h1 {
+            font-size: 1.5em;
+        }
+
+        h2 {
+            font-size: 1.2em;
+        }
+
+        h3 {
+            font-size: smaller;
+        }
+
+        p {
+            font-size: xx-small;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 900px;
+        }
+
+        .menu {
+            width: 100%;
+            height: 50px;
+            display: block;
+            color: white;
+            background-color: rgb(61, 61, 156);
+
+        }
+
+        ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        ul>li {
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            background-color: rgb(61, 61, 156);
+            display: inline-block;
+            margin: 0 -10px;
+            padding: 14px 30px;
+        }
+
+
+
+        span.blue {
+            color: rgb(61, 61, 156);
+            border-bottom: 1px dotted gray;
+        }
+
+        ul>li:hover {
+            background-color: rgb(69, 107, 231);
+        }
+
+        content>table {
+            width: 900px;
+            border-collapse: collapse;
+            border-top: 1.5px solid black;
+
+        }
+
+        table>caption {
+            text-align: left;
+        }
+
+        tr.blue {
+            color: rgb(61, 61, 156);
+            border-bottom: 1.5px dotted gray;
+        }
+
+
+        th {
+            text-align: center;
+            padding: 5px 10px;
+            border: 1px solid gray;
+            background-color: rgb(248, 248, 248);
+
+        }
+
+        td {
+            text-align: right;
+            padding: 5px 10px;
+            border: 1px solid gray;
+        }
+
+        span.bcircle {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border-radius: 15px;
+            color: white;
+            line-height: 25px;
+            font-weight: bold;
+            background-color: blue;
+
+        }
+
+        span.rcircle {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border-radius: 15px;
+            color: white;
+            line-height: 25px;
+            font-weight: bold;
+            background-color: rgb(255, 55, 20);
+        }
+
+        footer>a {
+            text-decoration: none;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+            <ul>
+                <li>바로알기</li>
+                <li>예방접종현황</li>
+                <li>이상반응</li>
+                <li>뉴스&팩트체크</li>
+                <li>허위조작정보신고</li>
+                <li>홍보자료</li>
+                <li>Q&A모음</li>
+                <li>알림·서식</li>
+            </ul>
+        </div>
+    </header>
+    <br>
+    <div class="container">
+        <content>
+            <span id="title">
+                <h3> HOME > 예방접종 현황 ><span class="blue">시도별 일일 접종 현황</span></h3>
+                <h1>시도별 일일 접종 현황</h1>
+            </span>
+            <hr>
+
+            <table>
+                <caption>
+                    <h2>접종실적 총괄 <sub>(06.14.,00시 기준)</sub></h2>
+                </caption>
+                <tr>
+                    <th>구분</th>
+                    <th>1차접종</th>
+                    <th>2차접종</th>
+                    <th>3차접종</th>
+                    <th>4차접종</th>
+                </tr>
+                <tr>
+                    <th>당일 누적 <span class="bcircle">A</span> + <span class="rcircle">B</span></th>
+                    <td>45,061,152</td>
+                    <td>44,610,957</td>
+                    <td>33,338,740</td>
+                    <td>4,268,918</td>
+                </tr>
+                <tr>
+                    <th>당일 실적 <span class="bcircle">A</span></th>
+                    <td>322</td>
+                    <td>849</td>
+                    <td>2,570</td>
+                    <td>10,683</td>
+                </tr>
+                <tr>
+                    <th>전일 누적 <span class="rcircle">B</span></th>
+                    <td>45,060,830</td>
+                    <td>44,610,108</td>
+                    <td>33,336,170</td>
+                    <td>4,258,235</td>
+                </tr>
+            </table>
+
+            <table>
+                <caption>
+                    <h2>시도별 접종 현황</h2>
+                </caption>
+                <tr>
+                    <th rowspan="2">구분</th>
+                    <th colspan="2">1차접종</th>
+                    <th colspan="2">2차접종</th>
+                    <th colspan="2">3차접종</th>
+                    <th colspan="2">4차접종</th>
+                </tr>
+                <tr>
+                    <th>당일 실적</th>
+                    <th>당일 누계</th>
+                    <th>당일 실적</th>
+                    <th>당일 누계</th>
+                    <th>당일 실적</th>
+                    <th>당일 누계</th>
+                    <th>당일 실적</th>
+                    <th>당일 누계</th>
+                </tr>
+                <tr class="blue">
+                    <th>합계</th>
+                    <td>322</td>
+                    <td>341,123,121</td>
+                    <td>849</td>
+                    <td>33,121,564</td>
+                    <td>2,584</td>
+                    <td>33,123,125</td>
+                    <td>10,644</td>
+                    <td>3,531,672</td>
+                </tr>
+                <tr>
+                    <th>서울</th>
+                    <td>322</td>
+                    <td>341,123,121</td>
+                    <td>849</td>
+                    <td>33,121,564</td>
+                    <td>2,584</td>
+                    <td>33,123,125</td>
+                    <td>10,644</td>
+                    <td>3,531,672</td>
+                </tr>
+                <tr>
+                    <th>부산</th>
+                    <td>322</td>
+                    <td>341,123,121</td>
+                    <td>849</td>
+                    <td>33,121,564</td>
+                    <td>2,584</td>
+                    <td>33,123,125</td>
+                    <td>10,644</td>
+                    <td>3,531,672</td>
+                </tr>
+                <tr>
+                    <th>대구</th>
+                    <td>322</td>
+                    <td>341,123,121</td>
+                    <td>849</td>
+                    <td>33,121,564</td>
+                    <td>2,584</td>
+                    <td>33,123,125</td>
+                    <td>10,644</td>
+                    <td>3,531,672</td>
+                </tr>
+            </table>
+            <p>상기 통계자료는 예방접종등록에 따라 변동 가능한 잠정 통계임</p>
+            <p>코로나19 백신 및 예방접종이 창작한 "예방접종현황" 저작물은 공공누리의 제1유형 (출처표시, 상업적 이용가능, 변경 가능)조건에 따라 이용할 수 있습니다.</p>
+        </content>
+        <hr>
+        <footer>
+            <a href="https://www.kdca.go.kr/contents.es?mid=a20810030000">개인정보처리방침</a>
+            <p>상담안내 : 보건소, 질병관리청 콜센터 1339, 지역번호 + 120</p>
+            <p>Copyright ⓒ By KDCA. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윤정은</title>
+
+    <style>
+        #container {
+            position: relative;
+            font-family: "맑은 고딕";
+            margin: 0 auto;
+            width: 1200px;
+            color: rgb(41, 41, 41);
+            font-size: 15px;
+        }
+
+        .menu {
+            list-style: none;
+            text-align: center;
+            border-top: 1px solid rgb(202, 202, 202);
+            border-bottom: 1px solid rgb(202, 202, 202);
+            font-weight: bold;
+            font-size: large;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .menu>li {
+            display: inline-block;
+            margin: 0 20px;
+            padding: 15px 0px;
+
+        }
+
+        .menu>li:hover {
+            color: rgb(50, 168, 152);
+            padding-bottom: 12px;
+            border-bottom: 3px solid rgb(50, 168, 152);
+        }
+
+        ul.navi {
+            width: 200px;
+            height: 400px;
+            font-weight: bold;
+            font-size: medium;
+            list-style: none;
+            text-align: left;
+            float: left;
+            color: rgb(41, 41, 41);
+            margin-top: 30px;
+        }
+
+        ul.navi>li {
+            border-top: 1px solid silver;
+            border-bottom: 1px solid silver;
+            margin: -1px 0;
+            padding: 10px;
+        }
+
+
+        ul.navi>li:hover {
+            background-color: rgb(50, 168, 152);
+            color: white;
+        }
+
+        section {
+            float: right;
+            width: 900px;
+        }
+
+        span.title>h1 {
+            display: block;
+            border-bottom: 2px solid black;
+            clear: both;
+            padding: 10px 0;
+        }
+
+        span.title>p {
+            float: right;
+        }
+
+        span.title>p.inform {
+            float: left;
+            margin-top: auto;
+        }
+
+        span.title>form {
+            float: right;
+        }
+
+        main table {
+            clear: both;
+            width: 900px;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: small;
+        }
+
+        th {
+            border-top: 1.5px solid black;
+            border-bottom: 1px solid silver;
+            padding: 5px;
+        }
+
+        td {
+            border-bottom: 1px solid silver;
+            padding: 5px;
+        }
+
+        td.name {
+            text-align: left;
+        }
+
+        main>p {
+            text-align: center;
+            margin: 30px auto;
+        }
+
+        span.circle {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border: 1px solid silver;
+            border-radius: 15px;
+            line-height: 25px;
+            font-weight: bold;
+        }
+
+        span.green {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border-radius: 15px;
+            color: white;
+            line-height: 25px;
+            font-weight: bold;
+            background-color: rgb(50, 168, 152);
+        }
+
+        footer {
+            clear: both;
+            display: block;
+            font-size: xx-small;
+            margin-left: -260px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <ul class="menu">
+                <li>감염병</li>
+                <li>건강정보</li>
+                <li>정책정보</li>
+                <li>연구개발</li>
+                <li>알림·자료</li>
+                <li>간행물·통계</li>
+                <li>민원·정보공개</li>
+                <li>기관소개</li>
+                <li>사업별 누리집</li>
+            </ul>
+
+        </header>
+        <nav>
+            <ul class="navi">
+                <h2>알림·자료</h2>
+                <li>감염병</li>
+                <li>건강정보</li>
+                <li>정책정보</li>
+                <li>연구개발</li>
+                <li>알림·자료</li>
+                <li>간행물·통계</li>
+                <li>민원·정보공개</li>
+                <li>기관소개</li>
+                <li>사업별 누리집</li>
+            </ul>
+        </nav>
+        <section>
+            <span class="title">
+                <p>HOME > 알림·자료 > 공고/공시 </p>
+                <h1>공고/공시</h1>
+                <p class="inform">전체 3,320건, 현재 페이지 2/332</p>
+                <form>
+                    <select>
+                        <option>제목</option>
+                        <option>작성자</option>
+                    </select>
+                    <input type="search" id="sch" size="40" placeholder="검색어를 입력하세요">
+                    <input type="submit" value="검색">
+                </form>
+            </span>
+            <main>
+                <table>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일자</th>
+                        <th>조회수</th>
+                    </tr>
+                    <tr>
+                        <td>2797</td>
+                        <td class="name">2022년 질병관리청 연구용역 입찰 취소공고 안내(질병관리청 공고 제2022-187호)</td>
+                        <td>역학조사분석담당관</td>
+                        <td>2022-05-25</td>
+                        <td>137</td>
+                    </tr>
+                    <tr>
+                        <td>2796</td>
+                        <td class="name">2022년 민간위탁사업 '심뇌혈관질환 국가통계 생산체계 운영사업' 공고</td>
+                        <td>만성질환예방과</td>
+                        <td>2022-05-24</td>
+                        <td>653</td>
+                    </tr>
+                    <tr>
+                        <td>2795</td>
+                        <td class="name">2022년 질병관리청 연구용역 입찰 공고 안내(질병관리청 공고 제2022-184호)</td>
+                        <td>인수공통감염병관리과</td>
+                        <td>2022-05-19</td>
+                        <td>127</td>
+                    </tr>
+                    <tr>
+                        <td>2794</td>
+                        <td class="name">2022년 질병관리청 연구용역 입찰 공고 안내(질병관리청 공고 제2022-181호)</td>
+                        <td>감염병진단관리총괄과 </td>
+                        <td>2022-05-17</td>
+                        <td>190</td>
+                    </tr>
+                    <tr>
+                        <td>2793</td>
+                        <td class="name">2022년 질병관리청 연구용역 입찰 공고 안내(질병관리청 공고 제2022-180호)</td>
+                        <td>대변인</td>
+                        <td>2022-05-17</td>
+                        <td>143</td>
+                    </tr>
+                    <tr>
+                        <td>2792</td>
+                        <td class="name">2022년 질병관리청 연구용역 입찰 취소공고 안내(질병관리청 공고 제2022-187호)</td>
+                        <td>역학조사분석담당관</td>
+                        <td>2022-05-16</td>
+                        <td>154</td>
+                    </tr>
+                    <tr>
+                        <td>2791</td>
+                        <td class="name">2022년 질병관리청 연구용역 입찰 취소공고 안내(질병관리청 공고 제2022-187호)</td>
+                        <td>만성질환예방과</td>
+                        <td>2022-05-12</td>
+                        <td>23</td>
+                    </tr>
+                    <tr>
+                        <td>2790</td>
+                        <td class="name">2022년 질병관리청 연구용역 입찰 취소공고 안내(질병관리청 공고 제2022-187호)</td>
+                        <td>의료감염관리과</td>
+                        <td>2022-05-10</td>
+                        <td>237</td>
+                    </tr>
+                    <tr>
+                        <td>2789</td>
+                        <td class="name">2022년 질병관리청 연구용역 입찰 취소공고 안내(질병관리청 공고 제2022-187호)</td>
+                        <td>건강영양조사분석과</td>
+                        <td>2022-05-09</td>
+                        <td>112</td>
+                    </tr>
+                    <tr>
+                        <td>2788</td>
+                        <td class="name">023년도 질병관리청 국립보건연구원 연구개발과제(R&D) 기술수요조사 실시 공고</td>
+                        <td>연구기획과</td>
+                        <td>2022-05-04</td>
+                        <td>123</td>
+                    </tr>
+                </table>
+                <p> <span class="circle">《 </span><span class="circle">〈</span> 1 <span class="green">2</span> 3 4 5 6 7
+                    8 9 10 <span class="circle">〉</span> <span class="circle">》</span> </p>
+                </article>
+
+            </main>
+
+            <footer>
+                <hr>
+                <p>이용안내 개인정보처리방침 웹접근성 품질인증 저작권정책 오시는길</p>
+                <p>(28159) 충북 청주시 흥덕구 오송읍 오송생명2로 187 오송보건의료행정타운내 질병관리청 ☎전화번호1339</p>
+                <p>COPYRIGHT © 2019 질병관리청 ALL RIGHTS RESERVED.</p>
+            </footer>
+    </div>
+
+</body>
+
+</html>
