@@ -116,6 +116,6 @@ var l1 = 'hello';
 
 var num;
 for (num of ary) {
-    console.log(num);
+    console.log(num.name);
 }
 console.log(num);
