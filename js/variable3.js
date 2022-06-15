@@ -13,7 +13,7 @@ str += '</table>';
 let month = 12;
 let days = ['일', '월', '화', '수', '목', '금', '토'];
 str = '';
-str = '<table border=1><tr>';
+str = '<table border=1><tr><caption>2022년 ' + month + '월 달력</caption>';
 for (let day of days) {
     str += '<th>' + day + '</th>';
 }
@@ -30,7 +30,6 @@ for (let i = 1; i <= getLastDay(month); i++) {
 }
 str += '</tr></table>';
 
-document.write('2022년 ' + month + '월 달력');
 document.write(str);
 
 
@@ -43,18 +42,18 @@ function getFirstDay(mon) {
         case 3:
         case 11:
             return 3;
-        case 6:
-            return 4;
-        case 7:
         case 4:
+        case 7:
             return 6;
-        case 12:
-        case 9:
-            return 5;
         case 5:
             return 1;
+        case 6:
+            return 4;
         case 8:
             return 2;
+        case 9:
+        case 12:
+            return 5;
     }
 }
 
