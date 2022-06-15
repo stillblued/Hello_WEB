@@ -113,3 +113,9 @@ console.log(l1);
 
 var l1 = 'hello';
 var l1 = 'hello';
+
+var num;
+for (num of ary) {
+    console.log(num);
+}
+console.log(num);
