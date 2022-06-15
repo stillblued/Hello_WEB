@@ -10,27 +10,30 @@ str += '</table>';
 
 //
 
-let month = 12;
-let days = ['일', '월', '화', '수', '목', '금', '토'];
-str = '';
-str = '<table border=1><tr><caption>2022년 ' + month + '월 달력</caption>';
-for (let day of days) {
-    str += '<th>' + day + '</th>';
-}
-str += '</tr><tr>';
-let vtd = getFirstDay(month);
-for (let i = 1; i < vtd; i++) {
-    str += '<td></td>'
-}
-for (let i = 1; i <= getLastDay(month); i++) {
-    str += '<td>' + i + '</td>'
-    if ((vtd - 1 + i) % 7 == 0) {
-        str += '</tr><tr>'
-    }
-}
-str += '</tr></table>';
 
-document.write(str);
+showCal2022(6);
+
+function showCal2022(mon) {
+    let days = ['일', '월', '화', '수', '목', '금', '토'];
+    str = '';
+    str = '<table border=1><tr><caption>2022년 ' + mon + '월 달력</caption>';
+    for (let day of days) {
+        str += '<th>' + day + '</th>';
+    }
+    str += '</tr><tr>';
+    let vtd = getFirstDay(mon);
+    for (let i = 1; i < vtd; i++) {
+        str += '<td></td>'
+    }
+    for (let i = 1; i <= getLastDay(mon); i++) {
+        str += '<td>' + i + '</td>'
+        if ((vtd - 1 + i) % 7 == 0) {
+            str += '</tr><tr>'
+        }
+    }
+    str += '</tr></table>';
+    document.write(str);
+};
 
 
 function getFirstDay(mon) {
