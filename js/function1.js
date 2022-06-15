@@ -20,3 +20,11 @@ function sumAry(ary) {
 let numAry = [20, 27, 33, 19, 45];
 let result = sumAry(numAry);
 console.log('배열의 합: ' + result);
+
+numAry.forEach(function () {
+    console.log('hi');
+});
+
+numAry.forEach(function (num, idx) {
+    console.log(num);
+});
