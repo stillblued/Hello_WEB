@@ -1,10 +1,14 @@
 let data = [{
         sname: 'Hong',
-        age: 15
+        age: 15,
+        height: 167.8,
+        weight: 65.5
     },
     {
         sname: 'Hwang',
-        age: 20
+        age: 20,
+        height: 175.5,
+        weight: 72.4
     }
 ]
 
@@ -34,7 +38,50 @@ class Table {
     }
 }
 
+console.log('HongKildong'.length); //1
+
 let table = new Table(data);
 let str = table.createTable(); // => 표형식으로 화면출력
-console.log(str);
 document.write(str);
+
+let names = ['Hong', 'Hwang', 'Kim', 'Park'];
+names.push('Choi');
+let searchName = names.find(function (val) {
+    //return val == 'Hwang'; // true => 반환
+    return val.length == 4; // 처음만난 length 4
+});
+
+console.log(searchName);
+
+class Estimate {
+    constructor(param) {
+        this.unit = param;
+    }
+
+    getEstimate(unittype, width, height) {
+        let priceinfo = this.unit.find(item => item.type == unittype);
+        return priceinfo.price * width * height;
+    }
+
+    addUnit(unit) {
+        this.unit.push(unit);
+    }
+}
+
+let unitinfo = [{
+    type: "wood",
+    price: 100
+}, {
+    type: "iron",
+    price: 300
+}, {
+    type: "plastic",
+    price: 200
+}];
+const estimator = new Estimate(unitinfo);
+estimator.addUnit({
+    type: 'glass',
+    price: 500
+});
+let result = estimator.getEstimate('wood', 20, 20);
+console.log(result);
