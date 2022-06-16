@@ -68,7 +68,7 @@ class Estimate {
     }
 }
 
-let unitinfo = [{
+let unitInfo = [{
     type: "wood",
     price: 100
 }, {
@@ -78,10 +78,25 @@ let unitinfo = [{
     type: "plastic",
     price: 200
 }];
-const estimator = new Estimate(unitinfo);
+const estimator = new Estimate(unitInfo);
 estimator.addUnit({
     type: 'glass',
     price: 500
 });
-let result = estimator.getEstimate('wood', 20, 20);
-console.log(result);
+let result1 = estimator.getEstimate('wood', 20, 20);
+console.log(result1);
+
+
+//object 타입으로 기능
+
+let obj = {};
+obj.unit = unitInfo;
+obj.getEstimate = function (unitType, width, height) {
+    let priceInfo = this.unit.find(item => item.type == unitType);
+    return priceInfo.price * width * height;
+}
+obj.addUnit = function (unit) {
+    this.unit.push(unit);
+}
+let result2 = obj.getEstimate('wood', 20, 20);
+console.log(result2);
