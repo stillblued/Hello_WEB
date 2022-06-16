@@ -89,7 +89,12 @@ console.log(result1);
 
 //object 타입으로 기능
 
-let obj = {};
+let obj = {
+    // unit: unitInfom
+    // getEstimate: function(){},
+    // addUnit: function(){}
+};
+
 obj.unit = unitInfo;
 obj.getEstimate = function (unitType, width, height) {
     let priceInfo = this.unit.find(item => item.type == unitType);
