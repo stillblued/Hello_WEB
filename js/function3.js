@@ -101,5 +101,7 @@ function outerFunc() {
     innerFunc();
     console.log(a);
     var b = 2;
+    console.log(b);
 }
 outerFunc();
+console.log(b);
