@@ -45,6 +45,9 @@ function Table(param) {
     }
 }
 
+//function(){ this -> window}
+// new 함수 => this : 객체 
+// 이벤트 => this : 이벤트 대상 
 
 let data = [{
         sname: '홍길동',

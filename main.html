@@ -30,9 +30,17 @@
 </head>
 
 <body>
-    <input type="file" id="selectFile" name="selectFile" accept="text/plain">
-    <script src="js/object.constructor.js"></script>
+    <!-- <input type="file" id="selectFile" name="selectFile" accept="text/plain"> -->
+    <script src="js/string_basic.js"></script>
 
+    <button id="id"> 클릭 </button>
+    <script>
+        let btn = document.getElementById('id');
+        console.log(btn);
+        btn.addEventListener('click', function () {
+            console.log(this);
+        })
+    </script>
 
 </body>
 
