@@ -40,7 +40,6 @@ function Table(param) {
             this.tag += '</tr>';
         });
         this.tag += '</tbody>';
-
     }
 }
 
