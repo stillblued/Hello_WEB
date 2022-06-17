@@ -18,28 +18,30 @@ function Table(param) {
 
     this.createTable = function () {
         this.tag += '<table border=1>';
-        this.createHead();
-        this.createBody();
+        this.tag += this.createHead();
+        this.tag += this.createBody();
         this.tag += '</table>';
         return this.tag;
     }
     this.createHead = function () {
-        this.tag += '<thead><tr>';
+        let str = '<thead><tr>';
         this.fields.forEach(elem => {
-            this.tag += '<th>' + elem + '</th>';
+            str += '<th>' + elem + '</th>';
         });
-        this.tag += '</tr></thead>';
+        str += '</tr></thead>';
+        return str;
     }
     this.createBody = function () {
-        this.tag += '<tbody>';
+        let str = '<tbody>';
         this.data.forEach(elem => {
-            this.tag += '<tr>';
+            str += '<tr>';
             for (let val in elem) {
-                this.tag += '<td>' + elem[val] + '</td>';
+                str += '<td>' + elem[val] + '</td>';
             }
-            this.tag += '</tr>';
+            str += '</tr>';
         });
-        this.tag += '</tbody>';
+        str += '</tbody>';
+        return str;
     }
 }
 
