@@ -47,3 +47,81 @@ console.log(`여사원의 급여평균 ${avg}`);
 let salaries = [];
 salaries = objAry.map(val => val.salary);
 console.log(salaries);
+
+
+function getMaxValue(ary) {
+    //배열요소에서 제일 큰 값을 반환하는 함수.
+    let max = ary[0];
+    for (i = 1; i < ary.length; i++) {
+        if (max < ary[i]) {
+            max = ary[i]
+        };
+    };
+    return max;
+}
+let maxVal = getMaxValue(salaries);
+console.log(`가장 큰 값 : ${maxVal}`);
+
+//reduce 메소드 
+let result = [1, 2, 3, 4].reduce(function (accum, curr, curIdx, ary) {
+    console.log(`누적 ${accum}, current 값 ${curr} => 두수의 핪 ${accum + curr}`);
+    return curr + accum;
+}, 0); //map, filter 메소드
+
+console.log(`최종결과 : ${result}`);
+
+result = [1, 2, 3, 4].reduce(function (accum, curr) {
+    accum.push(curr);
+    return accum;
+}, []); // accum = [1], [1,2], [1,2,3], [1,2,3,4]
+//result = [1, 2, 3, 4].map(val => val);
+
+
+result = [1, 2, 3, 4].reduce(function (accum, curr) {
+    if (curr % 2 == 0)
+        accum.push(curr);
+    return accum;
+}, []);
+// result = [1, 2, 3, 4].filter(val => {
+//     if (val % 2 == 0) {
+//         return val;
+//     }
+// });
+
+
+
+console.clear();
+result = ['Apple', 'Banana', 'Cherry'].reduce((accum, curr, currIdx, ary) => {
+    if (currIdx == 0) {
+        accum = '<ul>';
+    }
+    accum += `<li>${curr}</li>`;
+    if (currIdx == ary.length - 1) {
+        accum += '</ul>';
+    }
+    console.log(accum);
+    return accum;
+}, '');
+
+document.write(result);
+
+result = [3, 2, 4, 1, 5].reduce(function (accum, curr) {
+    if (accum < curr) {
+        return curr;
+    } else {
+        return accum;
+    }
+}, 0);
+
+result = [3, 2, 4, 1, 5].reduce(function (accum, curr) {
+    return accum + curr;
+}, 0);
+
+
+result = [3, 2, 4, 1, 5].reduce(function (accum, curr, currIdx, ary) {
+    if (currIdx == ary.length - 1) {
+        return (accum + curr) / ary.length;
+    }
+    return accum + curr;
+}, 0);
+console.log(result);
