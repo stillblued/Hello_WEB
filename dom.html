@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="show">
+
+    </div>
+    <!-- <div class=""></div> -->
+    <script>
+        let student = [{
+            sno: 1,
+            sname: "김길동"
+        }, {
+            sno: 2,
+            sname: "박길동"
+        }, {
+            sno: 3,
+            sname: "이길동"
+        }];
+
+        //Document Object Model => object:속성, 기능 
+        let show = document.getElementById('show');
+        show.appendChild(makeTable());
+
+        function makeUL() {
+            let ul = document.createElement('ul');
+
+            student.forEach(elem => {
+                let li = document.createElement('li');
+                li.setAttribute('id', elem.sno); //attributeNode 추가
+                let txt = document.createTextNode(`${elem.sno}, ${elem.sname}`);
+                li.appendChild(txt);
+                ul.appendChild(li);
+            });
+
+            return ul;
+        };
+
+        function makeTable() {
+            let table = document.createElement('table');
+            table.setAttribute('border', 1);
+
+            student.forEach(elem => {
+                let tr = document.createElement('tr');
+
+                for (let val in elem) {
+                    let td = document.createElement('td');
+                    let txt = document.createTextNode(`${elem[val]}`);
+                    td.appendChild(txt);
+                    tr.appendChild(td);
+                };
+                table.appendChild(tr);
+            });
+            return table;
+        };
+    </script>
+</body>
+
+</html>
