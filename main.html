@@ -31,15 +31,61 @@
 
 <body>
     <!-- <input type="file" id="selectFile" name="selectFile" accept="text/plain"> -->
-    <script src="js/array_method.js"></script>
 
-    <button id="id"> 클릭 </button>
+    <ul>
+        <li> Apple </li>
+        <li> Banana </li>
+        <li> Cherry </li>
+    </ul>
+    <div>
+        <h1>Cities</h1>
+        <ul>
+            <li id="one" class="red">Seoul</li>
+            <li id="two" class="red">London</li>
+            <li id="three" class="red">Newyork</li>
+            <li id="four">Tokyo</li>
+        </ul>
+    </div>
+    <!-- <script src="js/array_method.js"></script> -->
+
+    <button id="add"> 대구 </button>
+    <button> 삭제 </button>
     <script>
-        let btn = document.getElementById('id');
-        console.log(btn);
-        btn.addEventListener('click', function () {
-            console.log(this);
-        })
+        console.log(window);
+        let list = document.getElementsByTagName('li'); //HTMLCollection
+        let detail = list[3];
+        //element, attribute, text => node. DOM API(method(), 속성)
+        let attNode = detail.getAttribute('id');
+        let txtNode = detail.childNodes[0];
+        console.log(detail, attNode, txtNode);
+
+        let add = document.getElementById('add');
+        add.addEventListener('click', function () {
+
+            // element node 생성
+            let li = document.createElement('li');
+            li.innerHTML = '대구';
+            let ul = document.querySelector('div > ul');
+            ul.appendChild(li); //<ul><li>대구</li></ul>
+
+
+        });
+
+        let btns = document.querySelectorAll('button'); // NodeList (HTML 비해 세분화)
+        btns[1].addEventListener('click', function () { //이벤트 마우스오버 아웃.. 등
+
+            let li = document.querySelector('div > ul > li');
+            li.remove();
+
+        });
+
+
+        // list[0].remove();
+        // let btn = document.getElementById('id');
+        // console.log(btn);
+        // btn.addEventListener('click', function () {
+        //     console.log(this);
+        // })
     </script>
 
 </body>
