@@ -8,7 +8,5 @@ idx = [1, 2, 3, 4, 5].indexOf(8); // 존재하지 않을시 -1 리턴
 
 let str = `All HTML documents must start with a document type declaration.`;
 let strAry = str.split(' '); // 공백기준 반환타입 배열
-idx = strAry.indexOf('HTML');
-let names = ['홍길동', '김길동', '이길동', '박길동'];
-idx = names.indexOf('김길동');
+idx = strAry.lastIndexOf('HTML');
 console.log(idx);
