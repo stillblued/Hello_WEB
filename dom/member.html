@@ -42,8 +42,11 @@
         <input type="text" name="phone" id="phone"><br>
         <label for="memberId">생년월일</label>
         <input type="date" name="birth" id="birth" value="2022-01-01"><br>
-        <input type="submit" value="저장">
+        <input type="submit" value="추가">
         <input type="button" value="수정">
+        <input type="reset" value="초기화">
+        <input type="button" value="선택삭제">
+
     </form>
     <br>
     <div id="show">
@@ -55,6 +58,7 @@
                     <th>연락처</th>
                     <th>생년월일</th>
                     <th>삭제</th>
+                    <th>선택</th>
                 </tr>
             </thead>
             <tbody id="list">
@@ -89,9 +93,10 @@
         };
         showList();
 
-        document.querySelector('form[name = "memberForm"]').addEventListener('submit', saveMember);
 
         //신규저장
+        document.querySelector('form[name = "memberForm"]').addEventListener('submit', saveMember);
+
         function saveMember(evnt) {
             event.preventDefault();
 
@@ -100,10 +105,26 @@
             let mPhone = document.forms.memberForm.phone.value;
             let mBirth = document.forms.memberForm.birth.value;
 
+
+            //필수 항목 미기재
             if (mId == '' || mName == '' || mPhone == '' || mBirth == '') {
                 alert('항목 입력을 완료해주세요.');
                 return;
             }
+
+            //회원번호 중복 체크
+            let ids = document.querySelectorAll('#list > tr > td:nth-child(1)');
+            let exists = false;
+            for (let id of ids) {
+                if (id.textContent == mId) {
+                    exists = true;
+                    break;
+                }
+            };
+            if (exists) {
+                alert('이미 존재하는 회원번호입니다.')
+                return;
+            };
 
             let member = {
                 member_id: mId,
@@ -143,16 +164,28 @@
             };
         }
 
+        //선택 삭제
+        document.querySelector('input[value="선택삭제"]').addEventListener('click', deleteChecked);
+
+        function deleteChecked() {
+            let checkTr = document.querySelectorAll('#list > tr');
+            checkTr.forEach(tr => {
+                if (tr.children[5].children[0].checked) {
+                    tr.remove();
+                };
+            });
+        }
 
         //회원 tr생성
         function makeTr(member = {}) {
+            //클릭시 정보 위로 올라감
             let tr = document.createElement('tr');
             tr.addEventListener('click', function () { //화살표함수경우 this:window
                 document['memberForm']['memberId'].value = this.children[0].textContent;
                 document.memberForm.memberName.value = this.children[1].textContent;
                 document.forms.memberForm.phone.value = this.children[2].textContent;
                 document.forms.memberForm.birth.value = this.children[3].textContent;
-            });
+            }, false); //default : false (버블링);
 
             for (let val in member) {
                 let td = document.createElement('td');
@@ -162,8 +195,13 @@
             };
             let td = document.createElement('td');
             let btn = document.createElement('button');
+            btn.textContent = '삭제';
+            td.appendChild(btn);
+            tr.appendChild(td);
 
-            btn.onclick = function () {
+            //삭제버튼
+            btn.onclick = function (ev) {
+                ev.stopPropagation();
                 this.parentElement.parentElement.remove();
             };
 
@@ -171,9 +209,19 @@
             //     e.target.parentElement.parentElement.remove();
             // });
 
-            btn.textContent = '삭제';
-            td.appendChild(btn);
-            tr.appendChild(td);
+            //체크박스
+            let td2 = document.createElement('td');
+            let check = document.createElement('input');
+            check.type = "checkbox"
+            td2.appendChild(check);
+            tr.appendChild(td2);
+
+            td2.addEventListener('click', function (ev) {
+                ev.stopPropagation();
+            }, false);
+            check.addEventListener('click', function (ev) {
+                ev.stopPropagation(); //이벤트 전파 중단
+            }, false);
 
             return tr;
         }
