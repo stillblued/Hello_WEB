@@ -58,7 +58,7 @@
                     <th>연락처</th>
                     <th>생년월일</th>
                     <th>삭제</th>
-                    <th>선택</th>
+                    <th><input id="selectedCheck" type="checkbox"></th>
                 </tr>
             </thead>
             <tbody id="list">
@@ -175,6 +175,25 @@
                 };
             });
         }
+
+        //전체 선택
+        document.querySelector('#selectedCheck').addEventListener('click', checkedAll);
+
+        function checkedAll() {
+            let checkAll = document.querySelector('#selectedCheck').checked;
+            let checkTr = document.querySelectorAll('#list > tr');
+
+            if (checkAll) {
+                checkTr.forEach(tr => {
+                    tr.children[5].children[0].checked = true;
+                });
+            } else {
+                checkTr.forEach(tr => {
+                    tr.children[5].children[0].checked = false;
+                });
+            };
+        }
+
 
         //회원 tr생성
         function makeTr(member = {}) {
