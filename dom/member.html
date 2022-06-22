@@ -43,6 +43,7 @@
         <label for="memberId">생년월일</label>
         <input type="date" name="birth" id="birth" value="2022-01-01"><br>
         <input type="submit" value="저장">
+        <input type="button" value="수정">
     </form>
     <br>
     <div id="show">
@@ -90,6 +91,7 @@
 
         document.querySelector('form[name = "memberForm"]').addEventListener('submit', saveMember);
 
+        //신규저장
         function saveMember(evnt) {
             event.preventDefault();
 
@@ -119,9 +121,30 @@
             document.forms.memberForm.birth.value = '2000-01-01';
             document.forms['memberForm']['memberId'].focus();
 
-
         }
 
+        //수정
+        document.querySelector('input[type="button"]').addEventListener('click', changeMember);
+
+        function changeMember() {
+            let mId = document.forms.memberForm.memberId.value;
+            let mName = document.memberForm.memberName.value;
+            let mPhone = document.forms.memberForm.phone.value;
+            let mBirth = document.forms.memberForm.birth.value;
+
+            let trAry = document.querySelectorAll('#list > tr');
+            for (let i = 0; i < trAry.length; i++) {
+                if (mId == trAry[i].children[0].textContent) {
+                    trAry[i].children[1].textContent = mName;
+                    trAry[i].children[2].textContent = mPhone;
+                    trAry[i].children[3].textContent = mBirth;
+                    break;
+                };
+            };
+        }
+
+
+        //회원 tr생성
         function makeTr(member = {}) {
             let tr = document.createElement('tr');
             tr.addEventListener('click', function () { //화살표함수경우 this:window
@@ -155,6 +178,7 @@
             return tr;
         }
 
+        //연습
         function saveFnc() { ////onsubmit="saveMember()"
             event.preventDefault(); //기본기능차단
             let mi = document.getElementById('memberId').value;
