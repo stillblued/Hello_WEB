@@ -33,7 +33,7 @@
 
 <body>
     <!-- 회원번호, 회원이름, 연락처, 생년월일 -->
-    <form action="../index.html" onsubmit="saveFnc()">
+    <form action="../index.html" name="memberForm">
         <label for="memberId">회원번호</label>
         <input type="number" name="memberId" id="memberId" value="12223"><br>
         <label for="memberId">회원이름</label>
@@ -44,12 +44,84 @@
         <input type="date" name="birth" id="birth" value="2000-01-01"><br>
         <input type="submit" value="저장">
     </form>
+    <br>
+    <div id="show">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>회원번호</th>
+                    <th>회원이름</th>
+                    <th>연락처</th>
+                    <th>생년월일</th>
+                </tr>
+            </thead>
+            <tbody id="list">
+
+            </tbody>
+        </table>
+    </div>
 
     <script>
-        function saveFnc() {
-            event.preventDefault(); //기본기능차단
-            console.log('saveFnc call');
+        let data = [{
+            member_id: 111111,
+            member_name: "홍길동",
+            phone: '010-1111-2222',
+            birth: '2000-05-01'
+        }, {
+            member_id: 222222,
+            member_name: "이길동",
+            phone: '010-3333-4444',
+            birth: '2020-05-01'
+        }, {
+            member_id: 333333,
+            member_name: "김길동",
+            phone: '010-5555-6666',
+            birth: '2010-05-01'
+        }];
 
+        function showList() {
+            let tbody = document.getElementById('list');
+            data.forEach(elem => {
+                let tr = makeTr(elem);
+                tbody.appendChild(tr);
+            });
+        };
+        showList();
+
+        function makeTr(member = {}) {
+            let tr = document.createElement('tr');
+            for (let val in member) {
+                let td = document.createElement('td');
+                let txt = document.createTextNode(member[val]);
+                td.appendChild(txt);
+                tr.appendChild(td);
+            };
+            return tr;
+        }
+
+        document.querySelector('form[name = "memberForm"]').addEventListener('submit', saveMember);
+
+        function saveMember(evnt) {
+            event.preventDefault();
+
+            let mId = document['memberForm']['memberId'].value;
+            let mName = document.memberForm.memberName.value;
+            let mPhone = document.forms.memberForm.phone.value;
+            let mBirth = document.forms.memberForm.birth.value;
+            let member = {
+                member_id: mId,
+                member_name: mName,
+                phone: mPhone,
+                birth: mBirth
+            };
+            let tr = makeTr(member);
+            let tbody = document.getElementById('list');
+            tbody.appendChild(tr);
+
+        }
+
+        function saveFnc() { ////onsubmit="saveMember()
+            event.preventDefault(); //기본기능차단
             let mi = document.getElementById('memberId').value;
             let mn = document.querySelector('#memberName').value;
             let ph = document.getElementsByTagName('input')[2].value;
