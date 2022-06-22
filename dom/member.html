@@ -41,7 +41,7 @@
         <label for="memberId">연락처</label>
         <input type="text" name="phone" id="phone"><br>
         <label for="memberId">생년월일</label>
-        <input type="date" name="birth" id="birth"><br>
+        <input type="date" name="birth" id="birth" value="2022-01-01"><br>
         <input type="submit" value="저장">
     </form>
     <br>
@@ -112,6 +112,7 @@
             let tbody = document.getElementById('list');
             tbody.appendChild(makeTr(member));
 
+            //초기화
             document['memberForm']['memberId'].value = '';
             document.memberForm.memberName.value = null;
             document.forms.memberForm.phone.value = '';
@@ -123,6 +124,13 @@
 
         function makeTr(member = {}) {
             let tr = document.createElement('tr');
+            tr.addEventListener('click', function () { //화살표함수경우 this:window
+                document['memberForm']['memberId'].value = this.children[0].textContent;
+                document.memberForm.memberName.value = this.children[1].textContent;
+                document.forms.memberForm.phone.value = this.children[2].textContent;
+                document.forms.memberForm.birth.value = this.children[3].textContent;
+            });
+
             for (let val in member) {
                 let td = document.createElement('td');
                 let txt = document.createTextNode(member[val]);
@@ -170,6 +178,19 @@
             table.appendChild(tr);
             document.body.appendChild(table);
         }
+
+        // this.
+        //     children[0]
+        //     childNodes[0]
+        // this.
+        //     parent
+        //     parentNode
+        // this.
+        // previousElementSibling
+        // previousSibling
+
+        // nextElementSibling
+        // nextSibling
     </script>
 
 </body>
