@@ -35,13 +35,13 @@
     <!-- 회원번호, 회원이름, 연락처, 생년월일 -->
     <form action="../index.html" name="memberForm">
         <label for="memberId">회원번호</label>
-        <input type="number" name="memberId" id="memberId" value="12223"><br>
+        <input type="number" name="memberId" id="memberId"><br>
         <label for="memberId">회원이름</label>
-        <input type="text" name="memberName" id="memberName" value="홍길동"><br>
+        <input type="text" name="memberName" id="memberName"><br>
         <label for="memberId">연락처</label>
-        <input type="text" name="phone" id="phone" value="010-0101-1234"><br>
+        <input type="text" name="phone" id="phone"><br>
         <label for="memberId">생년월일</label>
-        <input type="date" name="birth" id="birth" value="2000-01-01"><br>
+        <input type="date" name="birth" id="birth"><br>
         <input type="submit" value="저장">
     </form>
     <br>
@@ -53,6 +53,7 @@
                     <th>회원이름</th>
                     <th>연락처</th>
                     <th>생년월일</th>
+                    <th>삭제</th>
                 </tr>
             </thead>
             <tbody id="list">
@@ -82,22 +83,10 @@
         function showList() {
             let tbody = document.getElementById('list');
             data.forEach(elem => {
-                let tr = makeTr(elem);
-                tbody.appendChild(tr);
+                tbody.appendChild(makeTr(elem));
             });
         };
         showList();
-
-        function makeTr(member = {}) {
-            let tr = document.createElement('tr');
-            for (let val in member) {
-                let td = document.createElement('td');
-                let txt = document.createTextNode(member[val]);
-                td.appendChild(txt);
-                tr.appendChild(td);
-            };
-            return tr;
-        }
 
         document.querySelector('form[name = "memberForm"]').addEventListener('submit', saveMember);
 
@@ -108,19 +97,57 @@
             let mName = document.memberForm.memberName.value;
             let mPhone = document.forms.memberForm.phone.value;
             let mBirth = document.forms.memberForm.birth.value;
+
+            if (mId == '' || mName == '' || mPhone == '' || mBirth == '') {
+                alert('항목 입력을 완료해주세요.');
+                return;
+            }
+
             let member = {
                 member_id: mId,
                 member_name: mName,
                 phone: mPhone,
                 birth: mBirth
             };
-            let tr = makeTr(member);
             let tbody = document.getElementById('list');
-            tbody.appendChild(tr);
+            tbody.appendChild(makeTr(member));
+
+            document['memberForm']['memberId'].value = '';
+            document.memberForm.memberName.value = null;
+            document.forms.memberForm.phone.value = '';
+            document.forms.memberForm.birth.value = '2000-01-01';
+            document.forms['memberForm']['memberId'].focus();
+
 
         }
 
-        function saveFnc() { ////onsubmit="saveMember()
+        function makeTr(member = {}) {
+            let tr = document.createElement('tr');
+            for (let val in member) {
+                let td = document.createElement('td');
+                let txt = document.createTextNode(member[val]);
+                td.appendChild(txt);
+                tr.appendChild(td);
+            };
+            let td = document.createElement('td');
+            let btn = document.createElement('button');
+
+            btn.onclick = function () {
+                this.parentElement.parentElement.remove();
+            };
+
+            // btn.addEventListener('click', (e) => {
+            //     e.target.parentElement.parentElement.remove();
+            // });
+
+            btn.textContent = '삭제';
+            td.appendChild(btn);
+            tr.appendChild(td);
+
+            return tr;
+        }
+
+        function saveFnc() { ////onsubmit="saveMember()"
             event.preventDefault(); //기본기능차단
             let mi = document.getElementById('memberId').value;
             let mn = document.querySelector('#memberName').value;
