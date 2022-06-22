@@ -183,15 +183,10 @@
             let checkAll = document.querySelector('#selectedCheck').checked;
             let checkTr = document.querySelectorAll('#list > tr');
 
-            if (checkAll) {
-                checkTr.forEach(tr => {
-                    tr.children[5].children[0].checked = true;
-                });
-            } else {
-                checkTr.forEach(tr => {
-                    tr.children[5].children[0].checked = false;
-                });
-            };
+            checkTr.forEach(tr => {
+                tr.children[5].children[0].checked = checkAll;
+            });
+
         }
 
 
