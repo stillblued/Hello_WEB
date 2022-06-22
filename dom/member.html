@@ -180,11 +180,9 @@
         document.querySelector('#selectedCheck').addEventListener('click', checkedAll);
 
         function checkedAll() {
-            let checkAll = document.querySelector('#selectedCheck').checked;
             let checkTr = document.querySelectorAll('#list > tr');
-
             checkTr.forEach(tr => {
-                tr.children[5].children[0].checked = checkAll;
+                tr.children[5].children[0].checked = this.checked;
             });
 
         }
@@ -233,10 +231,25 @@
             td2.addEventListener('click', function (ev) {
                 ev.stopPropagation();
             }, false);
+
             check.addEventListener('click', function (ev) {
                 ev.stopPropagation(); //이벤트 전파 중단
-            }, false);
+                let chNum = document.querySelectorAll('#list td > input[type = "checkbox"]:checked').length;
+                let allNum = document.querySelectorAll('#list td > input[type = "checkbox"]').length;
+                document.querySelector('#selectedCheck').checked = chNum == allNum ? true : false;
 
+                // let chAry = [];
+                // let checkTr = document.querySelectorAll('#list > tr');
+                // checkTr.forEach(tr => {
+                //     chAry.push(tr.children[5].children[0].checked);
+                // });
+                // let tF = chAry.every(elem => elem == true);
+                // if (tF) {
+                //     document.querySelector('#selectedCheck').checked = true;
+                // } else {
+                //     document.querySelector('#selectedCheck').checked = false;
+                // };
+            }, false);
             return tr;
         }
 
