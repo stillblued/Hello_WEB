@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom/member.html</title>
+    <style>
+        form {
+            border: 2px solid blue;
+        }
+
+        form>label {
+            display: inline-block;
+            width: 25%;
+            background-color: skyblue;
+        }
+
+        #memberName {
+            background-color: aqua;
+        }
+
+        input[name="phone"] {
+            background-color: aquamarine;
+        }
+
+        form>input:nth-of-type(4) {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 회원번호, 회원이름, 연락처, 생년월일 -->
+    <form action="../index.html" onsubmit="saveFnc()">
+        <label for="memberId">회원번호</label>
+        <input type="number" name="memberId" id="memberId" value="12223"><br>
+        <label for="memberId">회원이름</label>
+        <input type="text" name="memberName" id="memberName" value="홍길동"><br>
+        <label for="memberId">연락처</label>
+        <input type="text" name="phone" id="phone" value="010-0101-1234"><br>
+        <label for="memberId">생년월일</label>
+        <input type="date" name="birth" id="birth" value="2000-01-01"><br>
+        <input type="submit" value="저장">
+    </form>
+
+    <script>
+        function saveFnc() {
+            event.preventDefault(); //기본기능차단
+            console.log('saveFnc call');
+
+            let mi = document.getElementById('memberId').value;
+            let mn = document.querySelector('#memberName').value;
+            let ph = document.getElementsByTagName('input')[2].value;
+            let bt = document.querySelector('form > input:nth-child(11)').value;
+            console.log(`id: ${mi}, name: ${mn}, phone: ${ph}, birth: ${bt}`);
+
+            //dom => <table><tr><td>mi</td><td>mn</td>...
+            let table = document.createElement('table');
+            table.setAttribute('border', '1');
+            let tr = document.createElement('tr');
+
+            let fields = [mi, mn, ph, bt];
+            for (let field of fields) {
+                let td = document.createElement('td');
+                let txt = document.createTextNode(field);
+                td.appendChild(txt);
+                tr.appendChild(td);
+            };
+            table.appendChild(tr);
+            document.body.appendChild(table);
+        }
+    </script>
+
+</body>
+
+</html>
