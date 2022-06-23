@@ -25,13 +25,15 @@
         let xhtp = new XMLHttpRequest(); // Ajax : 파일정보 읽기.
         xhtp.open('get', '../js/dataset.xml'); // 요청방식, 요청URL
         xhtp.send();
-        xhtp.onload = function () {
+        xhtp.onload = loadCallBack;
+
+        function loadCallBack() {
             // console.log(xhtp.responseText);
             // document.write(xhtp.responseText);
             // let data = JSON.parse(xhtp.responseText);
             // console.log(data);
-            console.log(xhtp.responseXML);
-            let doc = xhtp.responseXML;
+            console.log(this.responseXML);
+            let doc = this.responseXML;
             let records = doc.getElementsByTagName('record'); // HTMLCollection
             records = doc.querySelectorAll('record'); // NodeList
             console.log(records[0].children[1].innerHTML);

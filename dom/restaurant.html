@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let xhtp = new XMLHttpRequest();
+        xhtp.open('get',
+            'https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=10&returnType=JSON&serviceKey=RjcS631Zz%2B0l%2BYtTISjCeV%2BaX%2BSPa1VV4rPM3lRswGibqu5WNHX5q7Fy2j43zDJ1VosnAqwBzVYdokg3TSsv6w%3D%3D'
+        );
+        xhtp.send();
+        xhtp.onload = function () {
+
+            let data = JSON.parse(xhtp.responseText);
+            console.log(data);
+
+
+        };
+    </script>
+</body>
+
+</html>
