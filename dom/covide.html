@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="sido" id="sido"><button id="search">조회</button><br>
+    <div id="show">
+    </div>
+
+
+    <script>
+        let centerList = '';
+
+        //조회버튼클릭
+        document.getElementById('search').addEventListener('click', findSido);
+
+        function findSido() {
+            let keyword = document.getElementById("sido").value;
+            if (!keyword) {
+                alert('검색할 시도를 입력하세요.');
+                return;
+            }
+            let filterList = centerList.filter(center => center.sido == keyword);
+
+            let tbody = document.createElement('tbody');
+            filterList.forEach(center => {
+                // console.log(center.id, center.sido, center.phoneNumber, center.centerName);
+                let tr = document.createElement('tr');
+                for (let field in fields) {
+                    let td = document.createElement('td');
+                    td.innerHTML = center[field];
+                    tr.append(td);
+                };
+                tbody.append(tr);
+            });
+            document.querySelector('#show > table > tbody').remove();
+            document.querySelector('#show > table').append(tbody);
+
+        };
+
+
+        let fields = {
+            id: '시도ID',
+            sido: '시도',
+            phoneNumber: '전화번호',
+            centerName: '센터이름'
+        };
+
+        let xhtp = new XMLHttpRequest();
+        let url =
+            'https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&returnType=JSON&serviceKey=RjcS631Zz%2B0l%2BYtTISjCeV%2BaX%2BSPa1VV4rPM3lRswGibqu5WNHX5q7Fy2j43zDJ1VosnAqwBzVYdokg3TSsv6w%3D%3D';
+        xhtp.open('get', url);
+        xhtp.send();
+        xhtp.onload = showList;
+
+
+        function showList() {
+            let result = JSON.parse(this.responseText);
+            console.log(result.data[0]);
+            centerList = result.data; //ajax 호출 후 centerList에 값 저장
+
+            //table
+            let table = document.createElement('table');
+            table.setAttribute('border', '1');
+            //thead
+            let thead = document.createElement('thead');
+            let tr = document.createElement('tr');
+            thead.append(tr);
+            for (let field in fields) {
+                let td = document.createElement('th');
+                td.innerHTML = field;
+                tr.append(td);
+            };
+
+            //tboby
+            let tbody = document.createElement('tbody');
+            result.data.forEach(center => {
+                // console.log(center.id, center.sido, center.phoneNumber, center.centerName);
+                let tr = document.createElement('tr');
+                for (let field in fields) {
+                    let td = document.createElement('td');
+                    td.innerHTML = center[field];
+                    tr.append(td);
+                };
+                tbody.append(tr);
+            });
+            table.append(thead, tbody);
+            document.getElementById('show').append(table);
+        };
+    </script>
+</body>
+
+</html>
